@@ -12,22 +12,50 @@
     <meta name="generator" content="GitHub Codespaces">
     <meta name="theme-color" content="#000000">
     <title>{% block title %}{{ title }} | GitHub Codespaces ♥️ Django{% endblock %}</title>
-    
+
     <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 
-<body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{% static 'Octocat.png' %}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Django
-            </p>
-            <p class="small">
-                Edit <code>hello_world/templates/index.html</code> and see changes live!
-            </p>
-        </header>
-    </div>
+<body class="App">
+    <header class="App-header">
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Learn More</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Title Section -->
+    <section class="Title">
+        <h1>{{ title }}</h1>
+        <h2>{{ subtitle }}</h2>
+        <p> {{ description}}</p>
+    </section>
+
+    <!-- Form Section -->
+    <section class="Form">
+        <form>
+            <label for="name">Check your password:</label>
+            <input type="username" id="password" name="password" placeholder="password">
+            <button type="submit">Submit Password</button>
+        </form>
+    </section>
+
+    <section>
+
+    </section>
+
+    <footer class="App-header">
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Learn More</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 
 </html>
