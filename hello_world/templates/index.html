@@ -7,55 +7,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="GitHub Codespaces ♥️ Django">
+    <meta name="description" content="Password Checker for UofU CS3090">
     <meta name="author" content="GitHub Codespaces">
     <meta name="generator" content="GitHub Codespaces">
     <meta name="theme-color" content="#000000">
-    <title>{% block title %}{{ title }} | GitHub Codespaces ♥️ Django{% endblock %}</title>
-
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <title>{% block title %}{{ context.title }}{% endblock %}</title>
 </head>
 
-<body class="App">
+<main class="App">
     <header class="App-header">
-        <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Learn More</a></li>
-            </ul>
-        </nav>
+        {% include 'header.html' %}
     </header>
 
     <!-- Title Section -->
     <section class="Title">
-        <h1>{{ title }}</h1>
-        <h2>{{ subtitle }}</h2>
-        <p> {{ description}}</p>
+        <h1>{{ context.title }}</h1>
+        <h2>{{ context.subtitle }}</h2>
+        <p> {{ context.description}}</p>
     </section>
 
     <!-- Form Section -->
     <section class="Form">
-        <form>
-            <label for="name">Check your password:</label>
-            <input type="username" id="password" name="password" placeholder="password">
-            <button type="submit">Submit Password</button>
+        <form method="post" action="{% url 'check_password' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+                <output name="error" class="error" role="alert"> {{ form.password.errors }}</output>
+                {{ form.password.label_tag }}
+                <input type="text" name="password" value="{{ form.password.value|default:'password' }}">
+            </div>
+            <button type="submit" id="passwordButton">Check Password</button>
         </form>
     </section>
 
-    <section>
-
-    </section>
-
-    <footer class="App-header">
-        <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Learn More</a></li>
-            </ul>
-        </nav>
+    <footer class="App-header App-footer">
+        {% include 'header.html' %}
     </footer>
-</body>
+</main>
 
 </html>

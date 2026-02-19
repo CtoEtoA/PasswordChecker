@@ -16,14 +16,15 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, URLPattern, URLResolver
 from django.conf import settings
 from django.conf.urls.static import static
 
 from hello_world.core import views as core_views
 
-urlpatterns = [
+urlpatterns: list[URLPattern | URLResolver] = [
     path("", core_views.index),
+    path('check/', core_views.index, name='check_password'),
     path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
