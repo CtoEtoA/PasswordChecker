@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY", default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", default=True)
+DEBUG = config("DEBUG", default=False)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='https://passwordchecker-rgv3.onrender.com').split(',')
 
 if 'CODESPACE_NAME' in os.environ:
     codespace_name = config("CODESPACE_NAME")
