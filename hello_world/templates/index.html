@@ -20,7 +20,7 @@
     </header>
 
     <!-- Title Section -->
-    <section class="Title">
+    <section>
         <h1>{{ context.title }}</h1>
         <h2>{{ context.subtitle }}</h2>
         <p> {{ context.description }}
@@ -34,13 +34,17 @@
     <section class="Form">
         <form method="post" action="{% url 'check_password' %}">
             {% csrf_token %}
-            {{ form.non_field_errors }}
             <div>
-                <output name="error" class="error" role="alert"> {{ form.password.errors }}</output>
                 {{ form.password.label_tag }}
-                <input type="text" name="password" value="{{ form.password.value|default:'password' }}">
+                <input type="text" name="password" value="{{ form.password.value|default:''}}" placeholder="password"
+                    required>
+                <button type="submit" id="passwordButton">Check Password</button>
             </div>
-            <button type="submit" id="passwordButton">Check Password</button>
+            {{ form.non_field_errors }}
+            <output name="error" class="error" role="alert"> {{ form.password.errors }}</output>
+            {% if error %}
+            <p class="success">{{ error }}</p>
+            {% endif %}
         </form>
     </section>
 

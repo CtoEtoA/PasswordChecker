@@ -18,7 +18,7 @@ code {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .App-logo {
@@ -57,9 +57,25 @@ h3 {
   margin: 0px;
 }
 
-.Form {
-  margin-top: 100px;
-  margin-bottom: 100px;
+Form {
+  margin: 20px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.Form .message {
+  min-height: 1.5em;
+  /* reserve one line; increase if necessary */
+  margin-bottom: 0.5rem;
+  color: #c00;
+  /* error color; success styled separately */
+}
+
+.Form .message .error,
+.Form .message .success {
+  margin: 0;
 }
 
 ul.errorlist {
@@ -69,6 +85,13 @@ ul.errorlist {
   font-size: 2rem;
 }
 
+.success {
+  color: #0c0;
+  padding: 0;
+  font-size: 2rem;
+}
+
 .App-footer {
-background-image: linear-gradient(to top, #000000, #ffffff);
-  }
+  background-image: linear-gradient(to top, #000000, #ffffff);
+  margin-top: auto;
+}

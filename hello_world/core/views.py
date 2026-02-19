@@ -19,7 +19,8 @@ def index(request: HttpRequest):
             if not ok:
                 error = message
             else:
-                error = ''  # or set success message
+                print("Password is strong!")
+                error = 'Strong Password!'  # or set success message
     else:
         form = PasswordCheckForm()
     return render(request, 'index.html', {'form': form, 'error': error, 'context': context})

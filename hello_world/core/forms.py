@@ -4,7 +4,6 @@ from .utils import check_password
 class PasswordCheckForm(forms.Form):
     password = forms.CharField(
         label='Password',
-        widget=forms.PasswordInput(attrs={'placeholder':'password'}),
         max_length=128,
     )
 
