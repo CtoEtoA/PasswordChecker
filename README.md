@@ -1,25 +1,19 @@
-# GitHub Codespaces ♥️ Django
+# Password Checker by CtoEtoA
+## Created for UofU 3090, Spring 2026
 
-Welcome to your shiny new Codespace running Django! We've got everything fired up and running for you to explore Django.
+What the program does:
+- This program allows users to check and create passwords with reasonable error checking.
 
-You've got a blank canvas to work on from a git perspective as well. There's a single initial commit with what you're seeing right now - where you go from here is up to you!
+Necessary dependencies:
+- None
 
-Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
+Limitations:
+- This tool is for educational use only and should not be used for securing sensitive information.
 
-## installing dependancies
+Ethical considerations and responsible use:
+- This tool can give a mis-sense of security from any passwords checked.
+- Make sure to use a verified password checker for any real paswwords.
 
-```python
-pip install -r requirements.txt
-```
-
-## To collect static files:
-
-```python
-python manage.py collectstatic
-```
-
-## To run this application:
-
-```python
-python manage.py runserver
-```
+Additional Notes:
+- GitHub Django template used as a basis
+- Github Copilot used for error checking and code suggestions 
