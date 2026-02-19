@@ -4,6 +4,9 @@
 What the program does:
 - This program allows users to check and create passwords with reasonable error checking.
 
+How to Run:
+either download the repo and host the website locally or go to 
+
 Necessary dependencies:
 - None
 
