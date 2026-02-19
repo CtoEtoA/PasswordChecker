@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .forms import PasswordCheckForm
 from .utils import check_password
+import traceback
 
 def index(request: HttpRequest):
     error = ''
@@ -13,16 +14,27 @@ def index(request: HttpRequest):
         "subdescription": "This should not be used with real passwords, as it is only a demonstration and does not implement any security measures.",
     }
 
-    if request.method == 'POST':
-        form = PasswordCheckForm(request.POST)
-        if form.is_valid():
-            pwd = form.cleaned_data.get('password', '')
-            ok, message = check_password(pwd)
-            if ok:
-                success = message or 'Strong Password!'
+    try:
+        if request.method == 'POST':
+            form = PasswordCheckForm(request.POST)
+            if form.is_valid():
+                pwd = form.cleaned_data.get('password', '')
+                ok, message = check_password(pwd)
+                if ok:
+                    success = message or 'Strong Password!'
+                else:
+                    error = message or 'Weak password'
             else:
-                error = message or 'Weak password'
-    else:
+                error = 'Invalid form submission.'
+        else:
+            form = PasswordCheckForm()
+    except Exception as e:
+        # Log the full traceback to the server logs
+        print("Exception in index view:", e)
+        traceback.print_exc()
+        error = 'An unexpected error occurred. Please try again.'
+
+        # Provide an empty form so the template still renders
         form = PasswordCheckForm()
 
     return render(
