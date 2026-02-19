@@ -37,8 +37,8 @@ def check_password(password: str) -> tuple[bool, str]:
         checks.append((9, "No consecutive whitespace"))
     if re.search(r"\d{1,2}[-/\.]\d{1,2}[-/\.]\d{2,4}|\d{4}[-/\.]\d{1,2}[-/\.]\d{1,2}|\b\d{4}\b", password):
         checks.append((11, "No dates"))
-    if re.search(r"\d{4}", password):
-        checks.append((12, "No 4-digit numbers"))
+    if re.search(r"\d{4,}", password):
+        checks.append((12, "No years or 4+ number sequences"))
     
     if checks:
         checks.sort(key=lambda t: t[0])
