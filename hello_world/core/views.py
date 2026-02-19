@@ -7,7 +7,8 @@ def index(request: HttpRequest):
     context = {
         "title": "Password Checker",
         "subtitle": "Created for UofU CS3090",
-        "description": "This is a password checker that checks the strength of a password and provides feedback on how to improve it."
+        "description": "This is a password checker that checks the strength of a password and provides feedback on how to improve it.",
+        "subdescription": "This should not be used with real passwords, as it is only a demonstration and does not implement any security measures.",
     }
     error = ''
     if request.method == 'POST':

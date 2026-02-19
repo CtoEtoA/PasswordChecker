@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Password Checker for UofU CS3090">
-    <meta name="author" content="GitHub Codespaces">
+    <meta name="author" content="CtoEtoA using GitHub Codespaces Django Template">
     <meta name="generator" content="GitHub Codespaces">
     <meta name="theme-color" content="#000000">
     <title>{% block title %}{{ context.title }}{% endblock %}</title>
@@ -23,7 +23,11 @@
     <section class="Title">
         <h1>{{ context.title }}</h1>
         <h2>{{ context.subtitle }}</h2>
-        <p> {{ context.description}}</p>
+        <p> {{ context.description }}
+            <br>
+            <em>{{ context.subdescription }}</em>
+        </p>
+        <hr>
     </section>
 
     <!-- Form Section -->
