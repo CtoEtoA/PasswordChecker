@@ -45,9 +45,10 @@
             </div>
             {{ form.non_field_errors }}
             <output name="error" class="error" role="alert"> {{ form.password.errors }}</output>
-            {% if error %}
-            <p class="success">{{ error }}</p>
+            {% if success %}
+            <p class="success">{{ success }}</p>
             {% endif %}
+
         </form>
     </section>
 
