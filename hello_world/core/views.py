@@ -1,49 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from .forms import PasswordCheckForm
-from .utils import check_password
-import traceback
+from .utils import check_password  # optional separate checker
 
 def index(request: HttpRequest):
-    error = ''
-    success = ''
     context = {
         "title": "Password Checker",
         "subtitle": "Created for UofU CS3090",
         "description": "This is a password checker that checks the strength of a password and provides feedback on how to improve it.",
         "subdescription": "This should not be used with real passwords, as it is only a demonstration and does not implement any security measures.",
     }
-
-    try:
-        if request.method == 'POST':
-            form = PasswordCheckForm(request.POST)
-            if form.is_valid():
-                pwd = form.cleaned_data.get('password', '')
-                ok, message = check_password(pwd)
-                if ok:
-                    success = message or 'Strong Password!'
-                else:
-                    error = message or 'Weak password'
+    error = ''
+    if request.method == 'POST':
+        form = PasswordCheckForm(request.POST)
+        if form.is_valid():
+            pwd = form.cleaned_data['password']
+            ok, message = check_password(pwd)  # implement this
+            if not ok:
+                error = message
             else:
-                error = 'Invalid form submission.'
-        else:
-            form = PasswordCheckForm()
-    except Exception as e:
-        # Log the full traceback to the server logs
-        print("Exception in index view:", e)
-        traceback.print_exc()
-        error = 'An unexpected error occurred. Please try again.'
-
-        # Provide an empty form so the template still renders
+                print("Password is strong!")
+                error = 'Strong Password!'  # or set success message
+    else:
         form = PasswordCheckForm()
-
-    return render(
-        request,
-        'index.html',
-        {
-            'form': form,
-            'error': error,
-            'success': success,
-            'context': context
-        }
-    )
+    return render(request, 'index.html', {'form': form, 'error': error, 'context': context})
