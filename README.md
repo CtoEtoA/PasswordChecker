@@ -5,7 +5,7 @@ What the program does:
 - This program allows users to check and create passwords with reasonable error checking.
 
 How to Run:
-either download the repo and host the website locally or go to 
+either download the repo and host the website locally or go to https://passwordchecker-rgv3.onrender.com/
 
 Necessary dependencies:
 - None
